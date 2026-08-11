@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>مقررات المدرسة</title>
+<title>كتابي - مقررات المدرسة والكتب الدراسية</title>
+
+<meta name="description" content="كتابي - منصة مجانية للوصول إلى المقررات والكتب الدراسية بصيغة PDF.">
+
+<meta name="keywords" content="كتابي, مقررات المدرسة, الكتب الدراسية, مقررات, كتب PDF, السودان">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://ahmdmshl094-design.github.io/Ketabi/">
 
 <style>
+
 *{
     box-sizing:border-box;
 }
@@ -190,6 +201,7 @@ footer{
     text-align:center;
     padding:30px;
     color:#64748b;
+    font-size:15px;
 }
 
 @media(max-width:600px){
@@ -199,7 +211,9 @@ footer{
     }
 
 }
+
 </style>
+
 </head>
 
 <body>
@@ -209,7 +223,7 @@ footer{
 <div class="header">
 
 <div class="logo">
-📚 مقررات المدرسة
+📚 كتابي
 </div>
 
 <div id="userArea"></div>
@@ -301,9 +315,10 @@ onclick="register()">
 
 <div class="card">
 
-<h1>📚 المكتبة المدرسية</h1>
+<h1>📚 كتابي - مقررات المدرسة</h1>
 
 <p>
+موقع كتابي للوصول إلى المقررات والكتب الدراسية بصيغة PDF.
 اختر المادة لعرض المقررات المتاحة.
 </p>
 
@@ -385,7 +400,7 @@ onclick="addBook()">
 
 
 <footer>
-© 2026 مقررات المدرسة
+© 2026 - جميع الحقوق محفوظة لمشعل
 </footer>
 
 
@@ -768,11 +783,15 @@ document.getElementById("booksArea");
 area.innerHTML=`
 
 <div class="card">
+
 <h2>
 ${icons[subject]} ${subject}
 </h2>
 
-<p>جاري تحميل المقررات...</p>
+<p>
+جاري تحميل المقررات...
+</p>
+
 </div>
 
 `;
@@ -1134,4 +1153,4 @@ return String(value||"")
 </script>
 
 </body>
-</html>
+    </html>
