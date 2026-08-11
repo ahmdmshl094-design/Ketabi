@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>مقررات المدرسة</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Tahoma,Arial,sans-serif;
+    background:#f4f7fb;
+    color:#172033;
+}
+
+header{
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
+    color:white;
+    padding:20px;
+    box-shadow:0 4px 15px #0002;
+}
+
+.header{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.container{
+    max-width:1100px;
+    margin:25px auto;
+    padding:0 15px;
+}
+
+.card{
+    background:white;
+    border-radius:18px;
+    padding:22px;
+    margin-bottom:20px;
+    box-shadow:0 5px 20px #0001;
+}
+
+.auth{
+    max-width:450px;
+    margin:70px auto;
+}
+
+input,select{
+    width:100%;
+    padding:13px;
+    border:1px solid #d8dee9;
+    border-radius:10px;
+    margin:7px 0;
+    font-size:15px;
+    outline:none;
+}
+
+button{
+    border:0;
+    padding:12px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.primary{
+    background:#2563eb;
+    color:white;
+}
+
+.success{
+    background:#16a34a;
+    color:white;
+}
+
+.danger{
+    background:#dc2626;
+    color:white;
+}
+
+.gray{
+    background:#e5e7eb;
+    color:#111827;
+}
+
+.hidden{
+    display:none!important;
+}
+
+.tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:15px;
+}
+
+.tabs button{
+    flex:1;
+}
+
+.message{
+    padding:12px;
+    border-radius:10px;
+    margin-top:12px;
+    background:#eef2ff;
+}
+
+.error{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+.success-msg{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.materials{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:12px;
+}
+
+.material{
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:15px;
+    padding:18px;
+    text-align:center;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.material:hover{
+    transform:translateY(-3px);
+    box-shadow:0 6px 18px #0002;
+}
+
+.material-icon{
+    font-size:32px;
+    display:block;
+    margin-bottom:8px;
+}
+
+.book{
+    background:white;
+    border-radius:16px;
+    padding:18px;
+    margin-top:15px;
+    box-shadow:0 4px 15px #0001;
+    border-right:5px solid #2563eb;
+}
+
+.book h3{
+    margin-top:0;
+}
+
+.book-buttons{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
+.admin-book{
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:14px;
+    margin-top:10px;
+}
+
+.small{
+    color:#64748b;
+    font-size:13px;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#64748b;
+}
+
+@media(max-width:600px){
+
+    .header{
+        flex-direction:column;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header">
+
+<div class="logo">
+📚 مقررات المدرسة
+</div>
+
+<div id="userArea"></div>
+
+</div>
+
+</header>
+
+
+<!-- ================= LOGIN ================= -->
+
+<section id="authPage" class="container auth">
+
+<div class="card">
+
+<h2>🔐 تسجيل الدخول</h2>
+
+<div class="tabs">
+
+<button class="primary" onclick="showLogin()">
+دخول
+</button>
+
+<button class="gray" onclick="showRegister()">
+حساب جديد
+</button>
+
+</div>
+
+
+<div id="loginForm">
+
+<input
+id="loginEmail"
+type="email"
+placeholder="البريد الإلكتروني">
+
+<input
+id="loginPassword"
+type="password"
+placeholder="كلمة المرور">
+
+<button
+class="primary"
+style="width:100%"
+onclick="login()">
+
+دخول
+
+</button>
+
+</div>
+
+
+<div id="registerForm" class="hidden">
+
+<input
+id="registerEmail"
+type="email"
+placeholder="البريد الإلكتروني">
+
+<input
+id="registerPassword"
+type="password"
+placeholder="كلمة المرور">
+
+<button
+class="primary"
+style="width:100%"
+onclick="register()">
+
+إنشاء حساب
+
+</button>
+
+</div>
+
+
+<div id="authMessage"></div>
+
+</div>
+
+</section>
+
+
+<!-- ================= HOME ================= -->
+
+<main id="homePage" class="container hidden">
+
+<div class="card">
+
+<h1>📚 المكتبة المدرسية</h1>
+
+<p>
+اختر المادة لعرض المقررات المتاحة.
+</p>
+
+</div>
+
+
+<div class="materials" id="materials"></div>
+
+
+<div id="booksArea"></div>
+
+</main>
+
+
+<!-- ================= ADMIN ================= -->
+
+<section id="adminPage" class="container hidden">
+
+<div class="card">
+
+<h2>⚙️ لوحة الإدارة</h2>
+
+<p>
+من هنا يمكنك إضافة مقررات جديدة.
+</p>
+
+
+<select id="adminSubject">
+
+<option value="">اختر المادة</option>
+
+<option>أدب</option>
+<option>بلاغة</option>
+<option>قواعد</option>
+<option>إنجليزي</option>
+<option>كيمياء</option>
+<option>فيزياء</option>
+<option>قرآن</option>
+<option>رياضيات</option>
+<option>أحياء</option>
+<option>هندسة</option>
+
+</select>
+
+
+<input
+id="adminTitle"
+placeholder="اسم المقرر">
+
+
+<input
+id="adminUrl"
+placeholder="رابط PDF من Google Drive">
+
+
+<button
+class="primary"
+onclick="addBook()">
+
+➕ إضافة المقرر
+
+</button>
+
+
+<div id="adminMessage"></div>
+
+</div>
+
+
+<div class="card">
+
+<h2>📚 المقررات المضافة</h2>
+
+<div id="adminBooks"></div>
+
+</div>
+
+</section>
+
+
+<footer>
+© 2026 مقررات المدرسة
+</footer>
+
+
+<script type="module">
+
+/* =========================================
+   FIREBASE
+========================================= */
+
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+import {
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+onAuthStateChanged,
+signOut
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+import {
+getFirestore,
+collection,
+addDoc,
+getDocs,
+query,
+where,
+deleteDoc,
+doc
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+const firebaseConfig={
+
+apiKey:
+"AIzaSyBpHkkfY-IFzQ5dVK8e20vSubxZRtdT720",
+
+authDomain:
+"school-learning-c6e25.firebaseapp.com",
+
+projectId:
+"school-learning-c6e25",
+
+storageBucket:
+"school-learning-c6e25.firebasestorage.app",
+
+messagingSenderId:
+"154017684227",
+
+appId:
+"1:154017684227:web:ea8b37c328f52084a8e736",
+
+measurementId:
+"G-B5HC6V6YEH"
+
+};
+
+
+const app=initializeApp(firebaseConfig);
+
+const auth=getAuth(app);
+
+const db=getFirestore(app);
+
+
+/* =========================================
+   ADMIN EMAIL
+========================================= */
+
+const ADMIN_EMAIL="meshalalboos@gmail.com";
+
+
+/* =========================================
+   MATERIALS
+========================================= */
+
+const subjects=[
+"أدب",
+"بلاغة",
+"قواعد",
+"إنجليزي",
+"كيمياء",
+"فيزياء",
+"قرآن",
+"رياضيات",
+"أحياء",
+"هندسة"
+];
+
+
+const icons={
+"أدب":"📕",
+"بلاغة":"📘",
+"قواعد":"📗",
+"إنجليزي":"🇬🇧",
+"كيمياء":"🧪",
+"فيزياء":"⚛️",
+"قرآن":"📖",
+"رياضيات":"📐",
+"أحياء":"🧬",
+"هندسة":"📏"
+};
+
+
+/* =========================================
+   AUTH UI
+========================================= */
+
+window.showLogin=function(){
+
+document
+.getElementById("loginForm")
+.classList.remove("hidden");
+
+document
+.getElementById("registerForm")
+.classList.add("hidden");
+
+};
+
+
+window.showRegister=function(){
+
+document
+.getElementById("loginForm")
+.classList.add("hidden");
+
+document
+.getElementById("registerForm")
+.classList.remove("hidden");
+
+};
+
+
+/* =========================================
+   REGISTER
+========================================= */
+
+window.register=async function(){
+
+const email=
+document
+.getElementById("registerEmail")
+.value
+.trim();
+
+const password=
+document
+.getElementById("registerPassword")
+.value;
+
+const message=
+document
+.getElementById("authMessage");
+
+
+if(!email||!password){
+
+message.innerHTML=
+'<div class="message error">اكتب البريد وكلمة المرور.</div>';
+
+return;
+
+}
+
+
+try{
+
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+message.innerHTML=
+'<div class="message success-msg">تم إنشاء الحساب بنجاح ✓</div>';
+
+}catch(error){
+
+message.innerHTML=
+'<div class="message error">تعذر إنشاء الحساب.</div>';
+
+console.log(error);
+
+}
+
+};
+
+
+/* =========================================
+   LOGIN
+========================================= */
+
+window.login=async function(){
+
+const email=
+document
+.getElementById("loginEmail")
+.value
+.trim();
+
+const password=
+document
+.getElementById("loginPassword")
+.value;
+
+const message=
+document
+.getElementById("authMessage");
+
+
+if(!email||!password){
+
+message.innerHTML=
+'<div class="message error">أدخل البريد وكلمة المرور.</div>';
+
+return;
+
+}
+
+
+try{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+}catch(error){
+
+message.innerHTML=
+'<div class="message error">البريد أو كلمة المرور غير صحيحة.</div>';
+
+}
+
+};
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+window.logout=async function(){
+
+await signOut(auth);
+
+};
+
+
+/* =========================================
+   AUTH STATE
+========================================= */
+
+onAuthStateChanged(auth,(user)=>{
+
+const authPage=
+document.getElementById("authPage");
+
+const homePage=
+document.getElementById("homePage");
+
+const adminPage=
+document.getElementById("adminPage");
+
+const userArea=
+document.getElementById("userArea");
+
+
+if(user){
+
+authPage.classList.add("hidden");
+
+homePage.classList.remove("hidden");
+
+
+userArea.innerHTML=`
+
+<button class="gray"
+onclick="logout()">
+
+خروج
+
+</button>
+
+`;
+
+
+if(
+user.email.toLowerCase()===
+ADMIN_EMAIL.toLowerCase()
+){
+
+adminPage.classList.remove("hidden");
+
+loadAdminBooks();
+
+}
+
+}else{
+
+authPage.classList.remove("hidden");
+
+homePage.classList.add("hidden");
+
+adminPage.classList.add("hidden");
+
+userArea.innerHTML="";
+
+}
+
+});
+
+
+/* =========================================
+   MATERIAL BUTTONS
+========================================= */
+
+function showMaterials(){
+
+const container=
+document.getElementById("materials");
+
+container.innerHTML="";
+
+
+subjects.forEach(subject=>{
+
+const div=
+document.createElement("div");
+
+div.className="material";
+
+
+div.innerHTML=`
+
+<span class="material-icon">
+${icons[subject]}
+</span>
+
+<strong>
+${subject}
+</strong>
+
+`;
+
+
+div.onclick=()=>loadBooks(subject);
+
+
+container.appendChild(div);
+
+});
+
+}
+
+
+showMaterials();
+
+
+/* =========================================
+   LOAD BOOKS
+========================================= */
+
+window.loadBooks=async function(subject){
+
+const area=
+document.getElementById("booksArea");
+
+
+area.innerHTML=`
+
+<div class="card">
+<h2>
+${icons[subject]} ${subject}
+</h2>
+
+<p>جاري تحميل المقررات...</p>
+</div>
+
+`;
+
+
+try{
+
+const q=
+query(
+collection(db,"books"),
+where("subject","==",subject)
+);
+
+
+const snapshot=
+await getDocs(q);
+
+
+let html=`
+
+<div class="card">
+
+<h2>
+${icons[subject]} مقررات ${subject}
+</h2>
+
+`;
+
+
+if(snapshot.empty){
+
+html+=
+"<p>لا توجد مقررات مضافة لهذه المادة حاليًا.</p>";
+
+}
+
+
+snapshot.forEach(item=>{
+
+const book=item.data();
+
+
+html+=`
+
+<div class="book">
+
+<h3>
+📘 ${escapeHTML(book.title)}
+</h3>
+
+<div class="small">
+المادة: ${escapeHTML(book.subject)}
+</div>
+
+<div class="book-buttons">
+
+<a
+href="${book.url}"
+target="_blank"
+rel="noopener">
+
+<button class="primary">
+📖 عرض PDF
+</button>
+
+</a>
+
+<a
+href="${book.url}"
+target="_blank"
+rel="noopener"
+download>
+
+<button class="success">
+⬇️ تحميل
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+html+="</div>";
+
+area.innerHTML=html;
+
+
+}catch(error){
+
+console.error(error);
+
+area.innerHTML=
+'<div class="card message error">تعذر تحميل المقررات.</div>';
+
+}
+
+};
+
+
+/* =========================================
+   ADD BOOK
+========================================= */
+
+window.addBook=async function(){
+
+const user=auth.currentUser;
+
+
+if(!user||
+user.email.toLowerCase()!==
+ADMIN_EMAIL.toLowerCase()
+){
+
+alert("ليس لديك صلاحية الإدارة.");
+
+return;
+
+}
+
+
+const subject=
+document
+.getElementById("adminSubject")
+.value;
+
+const title=
+document
+.getElementById("adminTitle")
+.value
+.trim();
+
+const url=
+document
+.getElementById("adminUrl")
+.value
+.trim();
+
+const message=
+document
+.getElementById("adminMessage");
+
+
+if(!subject||!title||!url){
+
+message.innerHTML=
+'<div class="message error">أكمل جميع البيانات.</div>';
+
+return;
+
+}
+
+
+try{
+
+await addDoc(
+collection(db,"books"),
+{
+
+subject:subject,
+
+title:title,
+
+url:url,
+
+createdAt:Date.now(),
+
+createdBy:user.uid
+
+}
+);
+
+
+message.innerHTML=
+'<div class="message success-msg">تمت إضافة المقرر ✓</div>';
+
+
+document
+.getElementById("adminSubject")
+.value="";
+
+document
+.getElementById("adminTitle")
+.value="";
+
+document
+.getElementById("adminUrl")
+.value="";
+
+
+loadAdminBooks();
+
+
+}catch(error){
+
+console.error(error);
+
+message.innerHTML=
+'<div class="message error">حدث خطأ أثناء إضافة المقرر.</div>';
+
+}
+
+};
+
+
+/* =========================================
+   ADMIN BOOKS
+========================================= */
+
+async function loadAdminBooks(){
+
+const container=
+document.getElementById("adminBooks");
+
+
+container.innerHTML=
+"جاري التحميل...";
+
+
+try{
+
+const snapshot=
+await getDocs(
+collection(db,"books")
+);
+
+
+container.innerHTML="";
+
+
+snapshot.forEach(item=>{
+
+const book=item.data();
+
+
+const div=
+document.createElement("div");
+
+div.className="admin-book";
+
+
+div.innerHTML=`
+
+<strong>
+${escapeHTML(book.title)}
+</strong>
+
+<br>
+
+<span class="small">
+${escapeHTML(book.subject)}
+</span>
+
+<br><br>
+
+<button
+class="danger"
+onclick="deleteBook('${item.id}')">
+
+🗑️ حذف
+
+</button>
+
+`;
+
+
+container.appendChild(div);
+
+});
+
+
+if(snapshot.empty){
+
+container.innerHTML=
+"لا توجد مقررات.";
+
+}
+
+
+}catch(error){
+
+console.error(error);
+
+container.innerHTML=
+"تعذر تحميل القائمة.";
+
+}
+
+}
+
+
+/* =========================================
+   DELETE BOOK
+========================================= */
+
+window.deleteBook=async function(id){
+
+const user=auth.currentUser;
+
+
+if(!user||
+user.email.toLowerCase()!==
+ADMIN_EMAIL.toLowerCase()
+){
+
+alert("ليس لديك صلاحية.");
+
+return;
+
+}
+
+
+if(!confirm("هل تريد حذف هذا المقرر؟")){
+
+return;
+
+}
+
+
+try{
+
+await deleteDoc(
+doc(db,"books",id)
+);
+
+loadAdminBooks();
+
+}catch(error){
+
+console.error(error);
+
+alert("تعذر حذف المقرر.");
+
+}
+
+};
+
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+function escapeHTML(value){
+
+return String(value||"")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+</script>
+
+</body>
+</html>
