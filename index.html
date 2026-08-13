@@ -13,17 +13,13 @@
 
 <meta name="description" content="كتابي - منصة مجانية للوصول إلى المقررات والكتب الدراسية بصيغة PDF.">
 
-<meta name="keywords" content="كتابي, مقررات المدرسة, الكتب الدراسية, مقررات, كتب PDF, السودان">
+<meta name="keywords" content="كتابي, مقررات المدرسة, الكتب الدراسية, كتب PDF, السودان">
 
 <meta name="robots" content="index, follow">
 
 <link rel="canonical" href="https://ahmdmshl094-design.github.io/Ketabi/">
 
 <style>
-
-/* =========================================
-   GENERAL
-========================================= */
 
 *{
     box-sizing:border-box;
@@ -86,9 +82,7 @@ header{
 }
 
 
-/* =========================================
-   BUTTONS
-========================================= */
+/* ================= BUTTONS ================= */
 
 button{
     border:0;
@@ -124,9 +118,7 @@ button:hover{
 }
 
 
-/* =========================================
-   AUTH
-========================================= */
+/* ================= AUTH ================= */
 
 .auth{
     max-width:450px;
@@ -179,18 +171,15 @@ select:focus{
 }
 
 
-/* =========================================
-   SUBJECTS
-========================================= */
+/* ================= SECTION ================= */
 
-.subject-section-title{
+.section-title{
     display:flex;
     align-items:center;
     gap:10px;
-    margin-bottom:8px;
 }
 
-.subject-section-title h2{
+.section-title h2{
     margin:0;
 }
 
@@ -201,6 +190,14 @@ select:focus{
     background:#2563eb;
     margin:10px 0 18px;
 }
+
+.section-description{
+    color:#64748b;
+    font-size:14px;
+}
+
+
+/* ================= MATERIALS ================= */
 
 .materials{
     display:grid;
@@ -231,7 +228,7 @@ select:focus{
 
 .material-icon{
     font-size:30px;
-    min-height:36px;
+    min-height:38px;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -243,9 +240,11 @@ select:focus{
 }
 
 
-/* =========================================
-   BOOKS
-========================================= */
+/* ================= BOOKS ================= */
+
+.books-area{
+    margin-top:20px;
+}
 
 .book{
     background:white;
@@ -279,9 +278,7 @@ select:focus{
 }
 
 
-/* =========================================
-   ADMIN
-========================================= */
+/* ================= ADMIN ================= */
 
 .admin-book{
     border:1px solid #ddd;
@@ -296,10 +293,16 @@ select:focus{
     font-size:16px;
 }
 
+.admin-book-section{
+    color:#2563eb;
+    font-size:13px;
+    margin-top:5px;
+}
+
 .admin-book-subject{
     color:#64748b;
     font-size:13px;
-    margin-top:5px;
+    margin-top:3px;
 }
 
 .admin-actions{
@@ -307,9 +310,7 @@ select:focus{
 }
 
 
-/* =========================================
-   FOOTER
-========================================= */
+/* ================= FOOTER ================= */
 
 footer{
     text-align:center;
@@ -319,9 +320,7 @@ footer{
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
+/* ================= MOBILE ================= */
 
 @media(max-width:600px){
 
@@ -352,9 +351,7 @@ footer{
 <body>
 
 
-<!-- =========================================
-     HEADER
-========================================= -->
+<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -372,15 +369,13 @@ footer{
 
 
 
-<!-- =========================================
-     LOGIN / REGISTER
-========================================= -->
+<!-- ================= LOGIN ================= -->
 
 <section id="authPage" class="container auth">
 
 <div class="card">
 
-<h2>🔐 تسجيل الدخول</h2>
+<h2>تسجيل الدخول</h2>
 
 <div class="tabs">
 
@@ -402,8 +397,6 @@ onclick="showRegister()">
 
 </div>
 
-
-<!-- LOGIN -->
 
 <div id="loginForm">
 
@@ -432,8 +425,6 @@ onclick="login()">
 
 </div>
 
-
-<!-- REGISTER -->
 
 <div id="registerForm" class="hidden">
 
@@ -471,35 +462,65 @@ onclick="register()">
 
 
 
-<!-- =========================================
-     HOME
-========================================= -->
+<!-- ================= HOME ================= -->
 
 <main id="homePage" class="container hidden">
 
 
-<!-- INTRO -->
-
 <div class="card">
 
-<h1>📚 كتابي - مقررات المدرسة</h1>
+<h1>كتابي - مقررات المدرسة</h1>
 
 <p>
-موقع كتابي للوصول إلى المقررات والكتب الدراسية بصيغة PDF.
-اختر المساق ثم المادة لعرض المقررات المتاحة.
+منصة كتابي للوصول إلى المقررات والكتب الدراسية بصيغة PDF.
+اختر المادة لعرض المقررات المتاحة.
 </p>
 
 </div>
 
 
 
-<!-- =========================================
-     SCIENTIFIC TRACK
-========================================= -->
+<!-- ================= BASIC ================= -->
 
 <div class="card">
 
-<div class="subject-section-title">
+<div class="section-title">
+
+<span style="font-size:28px;">📚</span>
+
+<h2>
+المواد الأساسية
+</h2>
+
+</div>
+
+<div class="section-line"></div>
+
+<p class="section-description">
+أدب، بلاغة، قواعد، إنجليزي وقرآن.
+</p>
+
+
+<div
+class="materials"
+id="basicMaterials">
+</div>
+
+
+<div
+id="basicBooksArea"
+class="books-area">
+</div>
+
+</div>
+
+
+
+<!-- ================= SCIENTIFIC ================= -->
+
+<div class="card">
+
+<div class="section-title">
 
 <span style="font-size:28px;">🔬</span>
 
@@ -511,27 +532,31 @@ onclick="register()">
 
 <div class="section-line"></div>
 
-<p class="small">
-اختر المادة لعرض المقررات والكتب الدراسية.
+<p class="section-description">
+كيمياء، فيزياء، رياضيات، أحياء وهندسة.
 </p>
+
 
 <div
 class="materials"
 id="scientificMaterials">
+</div>
 
+
+<div
+id="scientificBooksArea"
+class="books-area">
 </div>
 
 </div>
 
 
 
-<!-- =========================================
-     LITERARY TRACK
-========================================= -->
+<!-- ================= LITERARY ================= -->
 
 <div class="card">
 
-<div class="subject-section-title">
+<div class="section-title">
 
 <span style="font-size:28px;">📚</span>
 
@@ -543,34 +568,30 @@ id="scientificMaterials">
 
 <div class="section-line"></div>
 
-<p class="small">
-اختر المادة لعرض المقررات والكتب الدراسية.
+<p class="section-description">
+تاريخ، جغرافيا، دراسات ورياضيات أساسية.
 </p>
+
 
 <div
 class="materials"
 id="literaryMaterials">
-
-</div>
-
 </div>
 
 
+<div
+id="literaryBooksArea"
+class="books-area">
+</div>
 
-<!-- =========================================
-     BOOKS AREA
-========================================= -->
-
-<div id="booksArea"></div>
+</div>
 
 
 </main>
 
 
 
-<!-- =========================================
-     ADMIN
-========================================= -->
+<!-- ================= ADMIN ================= -->
 
 <section
 id="adminPage"
@@ -579,17 +600,21 @@ class="container hidden">
 
 <div class="card">
 
-<h2>⚙️ لوحة الإدارة</h2>
+<h2>لوحة الإدارة</h2>
 
 <p class="small">
-من هنا يمكنك إضافة المقررات وإدارتها.
+اختر القسم ثم المادة لإضافة مقرر جديد.
 </p>
 
 
-<select id="adminTrack">
+<select id="adminSection">
 
 <option value="">
-اختر المساق
+اختر القسم
+</option>
+
+<option value="basic">
+المواد الأساسية
 </option>
 
 <option value="scientific">
@@ -620,7 +645,7 @@ placeholder="اسم المقرر"
 
 <input
 id="adminUrl"
-placeholder="رابط PDF من Google Drive"
+placeholder="رابط PDF"
 type="url"
 >
 
@@ -629,7 +654,7 @@ type="url"
 class="primary"
 onclick="addBook()">
 
-➕ إضافة المقرر
+إضافة المقرر
 
 </button>
 
@@ -642,12 +667,10 @@ onclick="addBook()">
 
 <div class="card">
 
-<h2>📚 المقررات المضافة</h2>
+<h2>المقررات المضافة</h2>
 
 <div id="adminBooks">
-
 جاري التحميل...
-
 </div>
 
 </div>
@@ -668,9 +691,7 @@ onclick="addBook()">
 <script type="module">
 
 
-/* =========================================
-   FIREBASE
-========================================= */
+/* ================= FIREBASE ================= */
 
 import {
     initializeApp
@@ -733,46 +754,44 @@ const firebaseConfig = {
 const app =
 initializeApp(firebaseConfig);
 
-
 const auth =
 getAuth(app);
-
 
 const db =
 getFirestore(app);
 
 
 
-/* =========================================
-   ADMIN
-========================================= */
+/* ================= ADMIN ================= */
 
 const ADMIN_EMAIL =
 "meshalalboos@gmail.com";
 
 
 
-/* =========================================
-   SCIENTIFIC SUBJECTS
-========================================= */
+/* ================= SUBJECTS ================= */
+
+const basicSubjects = [
+
+    "أدب",
+    "بلاغة",
+    "قواعد",
+    "إنجليزي",
+    "قرآن"
+
+];
+
 
 const scientificSubjects = [
 
-    "إنجليزي",
     "كيمياء",
     "فيزياء",
-    "قرآن",
     "رياضيات",
     "أحياء",
     "هندسة"
 
 ];
 
-
-
-/* =========================================
-   LITERARY SUBJECTS
-========================================= */
 
 const literarySubjects = [
 
@@ -785,41 +804,32 @@ const literarySubjects = [
 
 
 
-/* =========================================
-   SUBJECT ICONS
-========================================= */
+/* ================= ICONS ================= */
 
 const icons = {
 
+    "أدب":"📕",
+    "بلاغة":"📘",
+    "قواعد":"📗",
     "إنجليزي":"EN",
-
-    "كيمياء":"🧪",
-
-    "فيزياء":"⚛",
-
     "قرآن":"📖",
 
+    "كيمياء":"🧪",
+    "فيزياء":"⚛",
     "رياضيات":"∑",
-
     "أحياء":"🧬",
-
     "هندسة":"∠",
 
     "تاريخ":"ت",
-
     "جغرافيا":"ج",
-
     "دراسات":"د",
-
     "رياضيات أساسية":"∑"
 
 };
 
 
 
-/* =========================================
-   AUTH UI
-========================================= */
+/* ================= LOGIN UI ================= */
 
 window.showLogin = function(){
 
@@ -848,9 +858,7 @@ window.showRegister = function(){
 
 
 
-/* =========================================
-   REGISTER
-========================================= */
+/* ================= REGISTER ================= */
 
 window.register = async function(){
 
@@ -900,15 +908,15 @@ window.register = async function(){
 
 
         message.innerHTML =
-        '<div class="message success-msg">تم إنشاء الحساب بنجاح ✓</div>';
+        '<div class="message success-msg">تم إنشاء الحساب بنجاح.</div>';
 
-
-    }catch(error){
+    }
+    catch(error){
 
         console.error(error);
 
         message.innerHTML =
-        '<div class="message error">تعذر إنشاء الحساب. تأكد من البريد وكلمة المرور.</div>';
+        '<div class="message error">تعذر إنشاء الحساب.</div>';
 
     }
 
@@ -916,9 +924,7 @@ window.register = async function(){
 
 
 
-/* =========================================
-   LOGIN
-========================================= */
+/* ================= LOGIN ================= */
 
 window.login = async function(){
 
@@ -956,11 +962,10 @@ window.login = async function(){
             password
         );
 
-
         message.innerHTML = "";
 
-
-    }catch(error){
+    }
+    catch(error){
 
         console.error(error);
 
@@ -973,29 +978,17 @@ window.login = async function(){
 
 
 
-/* =========================================
-   LOGOUT
-========================================= */
+/* ================= LOGOUT ================= */
 
 window.logout = async function(){
 
-    try{
-
-        await signOut(auth);
-
-    }catch(error){
-
-        console.error(error);
-
-    }
+    await signOut(auth);
 
 };
 
 
 
-/* =========================================
-   AUTH STATE
-========================================= */
+/* ================= AUTH STATE ================= */
 
 onAuthStateChanged(auth,(user)=>{
 
@@ -1044,7 +1037,8 @@ onAuthStateChanged(auth,(user)=>{
 
         }
 
-    }else{
+    }
+    else{
 
         authPage.classList.remove("hidden");
 
@@ -1060,22 +1054,20 @@ onAuthStateChanged(auth,(user)=>{
 
 
 
-/* =========================================
-   CREATE SCIENTIFIC BUTTONS
-========================================= */
+/* ================= CREATE SUBJECT BUTTONS ================= */
 
-function showScientificMaterials(){
+function createButtons(
+    containerId,
+    subjects
+){
 
     const container =
-    document.getElementById(
-        "scientificMaterials"
-    );
-
+    document.getElementById(containerId);
 
     container.innerHTML = "";
 
 
-    scientificSubjects.forEach(subject=>{
+    subjects.forEach(subject=>{
 
         const div =
         document.createElement("div");
@@ -1102,8 +1094,8 @@ function showScientificMaterials(){
         `;
 
 
-        div.onclick = () =>
-        loadBooks(subject);
+        div.onclick =
+        () => loadBooks(subject);
 
 
         container.appendChild(div);
@@ -1113,88 +1105,85 @@ function showScientificMaterials(){
 }
 
 
-
-/* =========================================
-   CREATE LITERARY BUTTONS
-========================================= */
-
-function showLiteraryMaterials(){
-
-    const container =
-    document.getElementById(
-        "literaryMaterials"
-    );
+createButtons(
+    "basicMaterials",
+    basicSubjects
+);
 
 
-    container.innerHTML = "";
+createButtons(
+    "scientificMaterials",
+    scientificSubjects
+);
 
 
-    literarySubjects.forEach(subject=>{
-
-        const div =
-        document.createElement("div");
-
-
-        div.className =
-        "material";
-
-
-        div.innerHTML = `
-
-            <span class="material-icon">
-
-                ${icons[subject] || "📚"}
-
-            </span>
-
-            <span class="material-name">
-
-                ${escapeHTML(subject)}
-
-            </span>
-
-        `;
-
-
-        div.onclick = () =>
-        loadBooks(subject);
-
-
-        container.appendChild(div);
-
-    });
-
-}
+createButtons(
+    "literaryMaterials",
+    literarySubjects
+);
 
 
 
-showScientificMaterials();
-
-showLiteraryMaterials();
-
-
-
-/* =========================================
-   LOAD BOOKS
-========================================= */
+/* ================= LOAD BOOKS ================= */
 
 window.loadBooks = async function(subject){
 
-    const area =
-    document.getElementById("booksArea");
+    let area;
+
+
+    if(basicSubjects.includes(subject)){
+
+        area =
+        document.getElementById(
+            "basicBooksArea"
+        );
+
+    }
+    else if(
+        scientificSubjects.includes(subject)
+    ){
+
+        area =
+        document.getElementById(
+            "scientificBooksArea"
+        );
+
+    }
+    else if(
+        literarySubjects.includes(subject)
+    ){
+
+        area =
+        document.getElementById(
+            "literaryBooksArea"
+        );
+
+    }
+
+
+    if(!area){
+
+        return;
+
+    }
 
 
     area.innerHTML = `
 
         <div class="card">
 
-            <h2>
+            <h3>
+
                 ${icons[subject] || "📚"}
-                ${escapeHTML(subject)}
-            </h2>
+
+                مقررات ${escapeHTML(subject)}
+
+            </h3>
 
             <p class="small">
+
                 جاري تحميل المقررات...
+
             </p>
 
         </div>
@@ -1219,10 +1208,12 @@ window.loadBooks = async function(subject){
 
             <div class="card">
 
-                <h2>
-                    ${icons[subject] || "📚"}
-                    مقررات ${escapeHTML(subject)}
-                </h2>
+                <h3>
+
+                    مقررات
+                    ${escapeHTML(subject)}
+
+                </h3>
 
         `;
 
@@ -1233,96 +1224,107 @@ window.loadBooks = async function(subject){
 
                 <p class="small">
 
-                    لا توجد مقررات مضافة لهذه المادة
-                    حاليًا.
+                    لا توجد مقررات مضافة لهذه المادة حاليًا.
 
                 </p>
 
             `;
 
         }
+        else{
+
+            snapshot.forEach(item=>{
+
+                const book =
+                item.data();
 
 
-        snapshot.forEach(item=>{
-
-            const book =
-            item.data();
-
-
-            const safeUrl =
-            isSafeUrl(book.url)
-            ? book.url
-            : "#";
+                const safeUrl =
+                isSafeUrl(book.url)
+                ? book.url
+                : "#";
 
 
-            html += `
+                html += `
 
-                <div class="book">
+                    <div class="book">
 
-                    <h3>
+                        <h3>
 
-                        📘
-                        ${escapeHTML(book.title)}
+                            ${escapeHTML(book.title)}
 
-                    </h3>
+                        </h3>
 
 
-                    <div class="small">
+                        <div class="small">
 
-                        المادة:
-                        ${escapeHTML(book.subject)}
+                            المادة:
+                            ${escapeHTML(book.subject)}
+
+                        </div>
+
+
+                        <div class="book-buttons">
+
+                            <a
+                            href="${safeUrl}"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                                <button
+                                class="primary">
+
+                                    عرض PDF
+
+                                </button>
+
+                            </a>
+
+
+                            <a
+                            href="${safeUrl}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            download>
+
+                                <button
+                                class="success">
+
+                                    تحميل
+
+                                </button>
+
+                            </a>
+
+                        </div>
 
                     </div>
 
+                `;
 
-                    <div class="book-buttons">
+            });
 
-                        <a
-                        href="${safeUrl}"
-                        target="_blank"
-                        rel="noopener noreferrer">
-
-                            <button
-                            class="primary">
-
-                                عرض PDF
-
-                            </button>
-
-                        </a>
-
-
-                        <a
-                        href="${safeUrl}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        download>
-
-                            <button
-                            class="success">
-
-                                تحميل
-
-                            </button>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            `;
-
-        });
+        }
 
 
         html += "</div>";
 
 
-        area.innerHTML = html;
+        area.innerHTML =
+        html;
 
 
-    }catch(error){
+        area.scrollIntoView({
+
+            behavior:"smooth",
+
+            block:"nearest"
+
+        });
+
+
+    }
+    catch(error){
 
         console.error(error);
 
@@ -1347,15 +1349,15 @@ window.loadBooks = async function(subject){
 
 
 
-/* =========================================
-   ADMIN TRACK SELECT
-========================================= */
+/* ================= ADMIN SECTION ================= */
 
-const adminTrack =
-document.getElementById("adminTrack");
+const adminSection =
+document.getElementById(
+    "adminSection"
+);
 
 
-adminTrack.addEventListener(
+adminSection.addEventListener(
     "change",
     updateAdminSubjects
 );
@@ -1364,8 +1366,8 @@ adminTrack.addEventListener(
 
 function updateAdminSubjects(){
 
-    const track =
-    adminTrack.value;
+    const section =
+    adminSection.value;
 
 
     const subjectSelect =
@@ -1383,29 +1385,35 @@ function updateAdminSubjects(){
     `;
 
 
-    let list = [];
+    let subjects = [];
 
 
-    if(track === "scientific"){
+    if(section === "basic"){
 
-        list =
+        subjects =
+        basicSubjects;
+
+    }
+    else if(section === "scientific"){
+
+        subjects =
         scientificSubjects;
 
     }
+    else if(section === "literary"){
 
-
-    if(track === "literary"){
-
-        list =
+        subjects =
         literarySubjects;
 
     }
 
 
-    list.forEach(subject=>{
+    subjects.forEach(subject=>{
 
         const option =
-        document.createElement("option");
+        document.createElement(
+            "option"
+        );
 
 
         option.value =
@@ -1426,9 +1434,7 @@ function updateAdminSubjects(){
 
 
 
-/* =========================================
-   ADD BOOK
-========================================= */
+/* ================= ADD BOOK ================= */
 
 window.addBook = async function(){
 
@@ -1452,9 +1458,9 @@ window.addBook = async function(){
     }
 
 
-    const track =
+    const section =
     document
-    .getElementById("adminTrack")
+    .getElementById("adminSection")
     .value;
 
 
@@ -1483,7 +1489,12 @@ window.addBook = async function(){
     .getElementById("adminMessage");
 
 
-    if(!track || !subject || !title || !url){
+    if(
+        !section ||
+        !subject ||
+        !title ||
+        !url
+    ){
 
         message.innerHTML = `
 
@@ -1506,8 +1517,7 @@ window.addBook = async function(){
 
             <div class="message error">
 
-                أدخل رابط PDF صحيح يبدأ بـ
-                https://
+                أدخل رابطًا صحيحًا يبدأ بـ https://
 
             </div>
 
@@ -1524,7 +1534,7 @@ window.addBook = async function(){
             collection(db,"books"),
             {
 
-                track:track,
+                section:section,
 
                 subject:subject,
 
@@ -1544,7 +1554,7 @@ window.addBook = async function(){
 
             <div class="message success-msg">
 
-                تمت إضافة المقرر بنجاح ✓
+                تمت إضافة المقرر بنجاح.
 
             </div>
 
@@ -1552,7 +1562,7 @@ window.addBook = async function(){
 
 
         document
-        .getElementById("adminTrack")
+        .getElementById("adminSection")
         .value = "";
 
 
@@ -1580,7 +1590,8 @@ window.addBook = async function(){
         loadAdminBooks();
 
 
-    }catch(error){
+    }
+    catch(error){
 
         console.error(error);
 
@@ -1601,9 +1612,7 @@ window.addBook = async function(){
 
 
 
-/* =========================================
-   ADMIN BOOKS
-========================================= */
+/* ================= ADMIN BOOKS ================= */
 
 async function loadAdminBooks(){
 
@@ -1631,7 +1640,7 @@ async function loadAdminBooks(){
         if(snapshot.empty){
 
             container.innerHTML =
-            "لا توجد مقررات مضافة.";
+            "لا توجد مقررات.";
 
             return;
 
@@ -1645,7 +1654,9 @@ async function loadAdminBooks(){
 
 
             const div =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
 
             div.className =
@@ -1657,6 +1668,13 @@ async function loadAdminBooks(){
                 <div class="admin-book-title">
 
                     ${escapeHTML(book.title)}
+
+                </div>
+
+
+                <div class="admin-book-section">
+
+                    ${getSectionName(book.section)}
 
                 </div>
 
@@ -1674,7 +1692,7 @@ async function loadAdminBooks(){
                     class="danger"
                     onclick="deleteBook('${item.id}')">
 
-                        حذف المقرر
+                        حذف
 
                     </button>
 
@@ -1688,7 +1706,8 @@ async function loadAdminBooks(){
         });
 
 
-    }catch(error){
+    }
+    catch(error){
 
         console.error(error);
 
@@ -1701,9 +1720,26 @@ async function loadAdminBooks(){
 
 
 
-/* =========================================
-   DELETE BOOK
-========================================= */
+/* ================= SECTION NAME ================= */
+
+function getSectionName(section){
+
+    if(section === "basic")
+        return "المواد الأساسية";
+
+    if(section === "scientific")
+        return "المساق العلمي";
+
+    if(section === "literary")
+        return "المساق الأدبي";
+
+    return "غير محدد";
+
+}
+
+
+
+/* ================= DELETE BOOK ================= */
 
 window.deleteBook = async function(id){
 
@@ -1748,10 +1784,10 @@ window.deleteBook = async function(id){
         loadAdminBooks();
 
 
-    }catch(error){
+    }
+    catch(error){
 
         console.error(error);
-
 
         alert(
             "تعذر حذف المقرر."
@@ -1763,9 +1799,7 @@ window.deleteBook = async function(id){
 
 
 
-/* =========================================
-   URL CHECK
-========================================= */
+/* ================= URL CHECK ================= */
 
 function isSafeUrl(value){
 
@@ -1779,7 +1813,8 @@ function isSafeUrl(value){
             url.protocol === "https:"
         );
 
-    }catch(error){
+    }
+    catch(error){
 
         return false;
 
@@ -1789,38 +1824,21 @@ function isSafeUrl(value){
 
 
 
-/* =========================================
-   ESCAPE HTML
-========================================= */
+/* ================= ESCAPE HTML ================= */
 
 function escapeHTML(value){
 
     return String(value || "")
 
-    .replaceAll(
-        "&",
-        "&amp;"
-    )
+    .replaceAll("&","&amp;")
 
-    .replaceAll(
-        "<",
-        "&lt;"
-    )
+    .replaceAll("<","&lt;")
 
-    .replaceAll(
-        ">",
-        "&gt;"
-    )
+    .replaceAll(">","&gt;")
 
-    .replaceAll(
-        '"',
-        "&quot;"
-    )
+    .replaceAll('"',"&quot;")
 
-    .replaceAll(
-        "'",
-        "&#039;"
-    );
+    .replaceAll("'","&#039;");
 
 }
 
@@ -1828,4 +1846,4 @@ function escapeHTML(value){
 
 </body>
 
-    </html>
+   </html>
