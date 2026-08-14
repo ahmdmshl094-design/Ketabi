@@ -21,18 +21,29 @@
 
 <style>
 
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
     box-sizing:border-box;
 }
 
 html{
     scroll-behavior:smooth;
+    overflow-x:hidden;
 }
 
 body{
     margin:0;
-    font-family:Tahoma,Arial,sans-serif;
-    background:#f4f7fb;
+    width:100%;
+    min-height:100vh;
+    overflow-x:hidden;
+    font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+    background:#f5f7fb;
     color:#172033;
 }
 
@@ -42,16 +53,37 @@ select{
     font-family:inherit;
 }
 
+button{
+    border:0;
+}
+
+a{
+    -webkit-tap-highlight-color:transparent;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
 header{
-    background:linear-gradient(135deg,#2563eb,#4f46e5);
+    position:relative;
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb 0%,
+            #4f46e5 100%
+        );
     color:white;
-    padding:20px;
-    box-shadow:0 4px 15px #0002;
+    padding:16px 20px;
+    box-shadow:0 3px 14px rgba(15,23,42,.12);
 }
 
 .header{
+    width:100%;
     max-width:1100px;
     margin:auto;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -59,22 +91,77 @@ header{
 }
 
 .logo{
-    font-size:22px;
-    font-weight:bold;
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-size:21px;
+    font-weight:800;
+    letter-spacing:-.3px;
 }
 
+.logo-icon{
+    width:38px;
+    height:38px;
+    border-radius:11px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.25);
+
+    position:relative;
+}
+
+/* كتاب عصري بدون Emoji */
+
+.logo-icon::before{
+    content:"";
+    width:18px;
+    height:22px;
+
+    border:2px solid white;
+    border-radius:3px 6px 6px 3px;
+
+    transform:skewY(-3deg);
+}
+
+.logo-icon::after{
+    content:"";
+    position:absolute;
+
+    width:2px;
+    height:19px;
+
+    background:white;
+    right:50%;
+    top:9px;
+}
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
 .container{
+    width:100%;
     max-width:1100px;
     margin:25px auto;
     padding:0 15px;
 }
 
 .card{
-    background:white;
+    width:100%;
+    background:#fff;
+    border:1px solid #edf0f5;
     border-radius:18px;
     padding:22px;
     margin-bottom:20px;
-    box-shadow:0 5px 20px #0001;
+
+    box-shadow:
+        0 5px 18px rgba(15,23,42,.055);
 }
 
 .hidden{
@@ -82,19 +169,29 @@ header{
 }
 
 
-/* ================= BUTTONS ================= */
+/* =========================================================
+   BUTTONS
+========================================================= */
 
 button{
-    border:0;
-    padding:12px 18px;
+    padding:11px 17px;
     border-radius:10px;
+
     cursor:pointer;
-    font-size:15px;
-    transition:.2s;
+    font-size:14px;
+    font-weight:600;
+
+    transition:
+        background .15s ease,
+        transform .15s ease;
 }
 
 button:hover{
     transform:translateY(-1px);
+}
+
+button:active{
+    transform:scale(.98);
 }
 
 .primary{
@@ -102,9 +199,17 @@ button:hover{
     color:white;
 }
 
+.primary:hover{
+    background:#1d4ed8;
+}
+
 .success{
     background:#16a34a;
     color:white;
+}
+
+.success:hover{
+    background:#15803d;
 }
 
 .danger{
@@ -113,51 +218,301 @@ button:hover{
 }
 
 .gray{
-    background:#e5e7eb;
+    background:#eef1f5;
+    color:#1f2937;
+}
+
+.gray:hover{
+    background:#e2e6ec;
+}
+
+
+/* =========================================================
+   AUTH
+========================================================= */
+
+.auth{
+    max-width:470px;
+    margin:55px auto;
+}
+
+
+/* Login card */
+
+.auth .card{
+    padding:30px;
+    border-radius:22px;
+
+    box-shadow:
+        0 15px 45px rgba(30,64,175,.10);
+}
+
+
+/* Login heading */
+
+.auth-header{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.auth-logo{
+    width:72px;
+    height:72px;
+    margin:0 auto 16px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
+
+    box-shadow:
+        0 10px 25px rgba(37,99,235,.22);
+
+    position:relative;
+}
+
+
+/* Modern book icon */
+
+.auth-logo::before{
+    content:"";
+
+    width:32px;
+    height:40px;
+
+    border:3px solid white;
+    border-radius:4px 9px 9px 4px;
+
+    transform:skewY(-3deg);
+}
+
+.auth-logo::after{
+    content:"";
+
+    position:absolute;
+
+    width:3px;
+    height:34px;
+
+    background:white;
+
+    right:50%;
+    top:19px;
+
+    border-radius:5px;
+}
+
+.auth-header h1{
+    margin:0;
+    font-size:25px;
     color:#111827;
 }
 
-
-/* ================= AUTH ================= */
-
-.auth{
-    max-width:450px;
-    margin:70px auto;
+.auth-header p{
+    margin:8px 0 0;
+    color:#64748b;
+    font-size:14px;
 }
 
+
+/* =========================================================
+   TABS
+========================================================= */
+
 .tabs{
-    display:flex;
-    gap:8px;
-    margin-bottom:15px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+
+    background:#f1f4f8;
+    padding:5px;
+    border-radius:12px;
+
+    margin-bottom:20px;
 }
 
 .tabs button{
-    flex:1;
+    width:100%;
+    padding:10px;
+    border-radius:8px;
 }
+
+.tabs .primary{
+    box-shadow:0 2px 7px rgba(37,99,235,.16);
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.input-group{
+    position:relative;
+    margin-bottom:13px;
+}
+
+.input-group input{
+    margin:0;
+    padding-right:44px;
+}
+
+.input-icon{
+    position:absolute;
+
+    right:14px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:18px;
+    height:18px;
+
+    color:#94a3b8;
+
+    pointer-events:none;
+}
+
+
+/* Envelope */
+
+.icon-mail{
+    border:2px solid currentColor;
+    border-radius:4px;
+}
+
+.icon-mail::after{
+    content:"";
+
+    position:absolute;
+
+    width:9px;
+    height:9px;
+
+    border-left:2px solid currentColor;
+    border-bottom:2px solid currentColor;
+
+    transform:
+        rotate(-45deg)
+        translate(-2px,-1px);
+
+    top:-2px;
+    left:2px;
+}
+
+
+/* Lock */
+
+.icon-lock{
+    border:2px solid currentColor;
+    border-radius:4px;
+    top:55%;
+}
+
+.icon-lock::before{
+    content:"";
+
+    position:absolute;
+
+    width:9px;
+    height:8px;
+
+    border:2px solid currentColor;
+    border-bottom:0;
+
+    border-radius:8px 8px 0 0;
+
+    top:-9px;
+    left:2.5px;
+}
+
+
+/* Input */
 
 input,
 select{
     width:100%;
-    padding:13px;
-    border:1px solid #d8dee9;
-    border-radius:10px;
-    margin:7px 0;
+
+    padding:13px 14px;
+
+    border:1px solid #dce2ea;
+    border-radius:11px;
+
+    margin:0 0 4px;
+
     font-size:15px;
+
     outline:none;
-    background:white;
+
+    background:#fff;
+
+    transition:
+        border .15s ease,
+        box-shadow .15s ease;
 }
 
 input:focus,
 select:focus{
     border-color:#2563eb;
-    box-shadow:0 0 0 3px #2563eb18;
+
+    box-shadow:
+        0 0 0 3px rgba(37,99,235,.08);
 }
+
+
+/* Forgot password */
+
+.forgot-row{
+    display:flex;
+    justify-content:flex-start;
+
+    margin:2px 0 16px;
+}
+
+.forgot-btn{
+    background:none;
+    padding:3px 0;
+
+    color:#2563eb;
+    font-size:13px;
+    font-weight:600;
+}
+
+.forgot-btn:hover{
+    background:none;
+    transform:none;
+    text-decoration:underline;
+}
+
+
+/* Main auth button */
+
+.auth-main-button{
+    width:100%;
+    padding:13px;
+
+    font-size:15px;
+}
+
+
+/* Auth message */
 
 .message{
     padding:12px;
     border-radius:10px;
+
     margin-top:12px;
+
     background:#eef2ff;
+    font-size:13px;
+    line-height:1.7;
 }
 
 .error{
@@ -171,7 +526,97 @@ select:focus{
 }
 
 
-/* ================= SECTION ================= */
+/* =========================================================
+   PASSWORD RESET
+========================================================= */
+
+.reset-box{
+    animation:fadeIn .2s ease;
+}
+
+.reset-header{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.reset-icon{
+    width:55px;
+    height:55px;
+
+    margin:0 auto 12px;
+
+    border-radius:16px;
+
+    background:#eff6ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+}
+
+.reset-icon::before{
+    content:"";
+
+    width:22px;
+    height:16px;
+
+    border:2px solid #2563eb;
+    border-radius:4px;
+}
+
+.reset-icon::after{
+    content:"";
+
+    position:absolute;
+
+    width:8px;
+    height:8px;
+
+    border-left:2px solid #2563eb;
+    border-bottom:2px solid #2563eb;
+
+    transform:rotate(-45deg);
+
+    top:15px;
+}
+
+.reset-header h3{
+    margin:0 0 6px;
+}
+
+.reset-header p{
+    margin:0;
+
+    color:#64748b;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.back-login{
+    width:100%;
+    margin-top:9px;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(4px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   SECTION TITLES
+========================================================= */
 
 .section-title{
     display:flex;
@@ -181,45 +626,90 @@ select:focus{
 
 .section-title h2{
     margin:0;
+    font-size:20px;
+}
+
+.section-icon{
+    width:38px;
+    height:38px;
+
+    border-radius:11px;
+
+    background:#eff6ff;
+    color:#2563eb;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:17px;
+    font-weight:800;
 }
 
 .section-line{
     height:3px;
-    width:55px;
+    width:45px;
+
     border-radius:20px;
+
     background:#2563eb;
-    margin:10px 0 18px;
+
+    margin:10px 0 16px;
 }
 
 .section-description{
     color:#64748b;
     font-size:14px;
+    margin-top:0;
 }
 
 
-/* ================= MATERIALS ================= */
+/* =========================================================
+   MATERIALS
+========================================================= */
 
 .materials{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-    gap:12px;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(135px,1fr)
+        );
+
+    gap:10px;
 }
 
 .material{
-    background:white;
+    background:#fff;
+
     border:1px solid #e5e7eb;
-    border-radius:15px;
-    padding:18px;
+
+    border-radius:13px;
+
+    padding:14px 10px;
+
     text-align:center;
+
     cursor:pointer;
-    transition:.2s;
+
+    transition:
+        transform .15s ease,
+        border .15s ease,
+        box-shadow .15s ease;
+
     user-select:none;
+
+    min-width:0;
 }
 
 .material:hover{
-    transform:translateY(-3px);
-    box-shadow:0 6px 18px #0002;
-    border-color:#2563eb;
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 5px 14px rgba(15,23,42,.07);
+
+    border-color:#93c5fd;
 }
 
 .material:active{
@@ -227,44 +717,72 @@ select:focus{
 }
 
 .material-icon{
-    font-size:30px;
-    min-height:38px;
+    width:42px;
+    height:42px;
+
+    margin:0 auto 8px;
+
+    border-radius:12px;
+
+    background:#eff6ff;
+    color:#2563eb;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    margin-bottom:8px;
+
+    font-size:17px;
+    font-weight:800;
 }
 
 .material-name{
-    font-weight:bold;
+    font-weight:700;
+    font-size:14px;
 }
 
 
-/* ================= BOOKS ================= */
+/* =========================================================
+   BOOKS
+========================================================= */
 
 .books-area{
-    margin-top:20px;
+    margin-top:18px;
 }
 
 .book{
-    background:white;
-    border-radius:16px;
-    padding:18px;
-    margin-top:15px;
-    box-shadow:0 4px 15px #0001;
-    border-right:5px solid #2563eb;
+    background:#fff;
+
+    border:1px solid #edf0f5;
+    border-right:4px solid #2563eb;
+
+    border-radius:13px;
+
+    padding:16px;
+
+    margin-top:12px;
+
+    box-shadow:
+        0 3px 12px rgba(15,23,42,.045);
 }
 
 .book h3{
-    margin-top:0;
-    margin-bottom:8px;
+    margin:0 0 7px;
+    font-size:16px;
 }
 
 .book-buttons{
     display:flex;
-    gap:8px;
+
+    gap:7px;
+
     flex-wrap:wrap;
-    margin-top:15px;
+
+    margin-top:13px;
+}
+
+.book-buttons button{
+    padding:9px 13px;
+    font-size:13px;
 }
 
 .book-buttons a{
@@ -278,67 +796,159 @@ select:focus{
 }
 
 
-/* ================= ADMIN ================= */
+/* =========================================================
+   ADMIN
+========================================================= */
 
 .admin-book{
-    border:1px solid #ddd;
-    border-radius:12px;
-    padding:14px;
-    margin-top:10px;
-    background:#fafafa;
+    border:1px solid #e5e7eb;
+
+    border-radius:11px;
+
+    padding:13px;
+
+    margin-top:9px;
+
+    background:#fafbfc;
 }
 
 .admin-book-title{
     font-weight:bold;
-    font-size:16px;
+    font-size:15px;
 }
 
 .admin-book-section{
     color:#2563eb;
-    font-size:13px;
-    margin-top:5px;
+    font-size:12px;
+    margin-top:4px;
 }
 
 .admin-book-subject{
     color:#64748b;
-    font-size:13px;
+    font-size:12px;
     margin-top:3px;
 }
 
 .admin-actions{
-    margin-top:12px;
+    margin-top:9px;
+}
+
+.admin-actions button{
+    padding:8px 12px;
+    font-size:13px;
 }
 
 
-/* ================= FOOTER ================= */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
     text-align:center;
-    padding:30px;
+
+    padding:25px 15px;
+
     color:#64748b;
-    font-size:15px;
+
+    font-size:13px;
 }
 
 
-/* ================= MOBILE ================= */
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:600px){
 
-    .header{
-        flex-direction:column;
-        text-align:center;
+    header{
+        padding:13px 15px;
     }
 
-    .materials{
-        grid-template-columns:repeat(2,1fr);
+    .header{
+        flex-direction:row;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .logo-icon{
+        width:34px;
+        height:34px;
+    }
+
+    .container{
+        margin:17px auto;
+        padding:0 11px;
+    }
+
+    .auth{
+        margin:25px auto;
+        padding:0 10px;
+    }
+
+    .auth .card{
+        padding:21px 17px;
+        border-radius:18px;
+    }
+
+    .auth-header h1{
+        font-size:22px;
+    }
+
+    .auth-logo{
+        width:64px;
+        height:64px;
     }
 
     .card{
-        padding:18px;
+        padding:17px;
+        border-radius:15px;
+    }
+
+    .materials{
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+    }
+
+    .material{
+        padding:12px 8px;
+    }
+
+    .material-icon{
+        width:38px;
+        height:38px;
+        font-size:15px;
+    }
+
+    .material-name{
+        font-size:13px;
+    }
+
+    .book-buttons{
+        display:grid;
+        grid-template-columns:1fr 1fr;
     }
 
     .book-buttons button{
         width:100%;
+    }
+
+}
+
+@media(max-width:360px){
+
+    .materials{
+        grid-template-columns:1fr 1fr;
+        gap:7px;
+    }
+
+    .auth .card{
+        padding:18px 13px;
+    }
+
+    .book-buttons{
+        grid-template-columns:1fr;
     }
 
 }
@@ -351,14 +961,20 @@ footer{
 <body>
 
 
-<!-- ================= HEADER ================= -->
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
 <header>
 
 <div class="header">
 
 <div class="logo">
-📚 كتابي
+
+<div class="logo-icon"></div>
+
+<span>كتابي</span>
+
 </div>
 
 <div id="userArea"></div>
@@ -369,18 +985,38 @@ footer{
 
 
 
-<!-- ================= LOGIN ================= -->
+<!-- =========================================================
+     LOGIN
+========================================================= -->
 
 <section id="authPage" class="container auth">
 
 <div class="card">
 
-<h2>تسجيل الدخول</h2>
+
+<!-- AUTH HEADER -->
+
+<div class="auth-header">
+
+<div class="auth-logo"></div>
+
+<h1>مرحبًا بك في كتابي</h1>
+
+<p>
+الوصول إلى مقرراتك وكتبك الدراسية بسهولة
+</p>
+
+</div>
+
+
+
+<!-- TABS -->
 
 <div class="tabs">
 
 <button
 class="primary"
+id="loginTab"
 onclick="showLogin()">
 
 دخول
@@ -389,6 +1025,7 @@ onclick="showLogin()">
 
 <button
 class="gray"
+id="registerTab"
 onclick="showRegister()">
 
 حساب جديد
@@ -398,7 +1035,14 @@ onclick="showRegister()">
 </div>
 
 
+
+<!-- LOGIN FORM -->
+
 <div id="loginForm">
+
+<div class="input-group">
+
+<span class="input-icon icon-mail"></span>
 
 <input
 id="loginEmail"
@@ -407,6 +1051,13 @@ placeholder="البريد الإلكتروني"
 autocomplete="email"
 >
 
+</div>
+
+
+<div class="input-group">
+
+<span class="input-icon icon-lock"></span>
+
 <input
 id="loginPassword"
 type="password"
@@ -414,19 +1065,42 @@ placeholder="كلمة المرور"
 autocomplete="current-password"
 >
 
-<button
-class="primary"
-style="width:100%"
-onclick="login()">
+</div>
 
-دخول
+
+<div class="forgot-row">
+
+<button
+type="button"
+class="forgot-btn"
+onclick="showResetPassword()">
+
+نسيت كلمة المرور؟
 
 </button>
 
 </div>
 
 
+<button
+class="primary auth-main-button"
+onclick="login()">
+
+دخول إلى الحساب
+
+</button>
+
+</div>
+
+
+
+<!-- REGISTER FORM -->
+
 <div id="registerForm" class="hidden">
+
+<div class="input-group">
+
+<span class="input-icon icon-mail"></span>
 
 <input
 id="registerEmail"
@@ -435,6 +1109,13 @@ placeholder="البريد الإلكتروني"
 autocomplete="email"
 >
 
+</div>
+
+
+<div class="input-group">
+
+<span class="input-icon icon-lock"></span>
+
 <input
 id="registerPassword"
 type="password"
@@ -442,9 +1123,11 @@ placeholder="كلمة المرور"
 autocomplete="new-password"
 >
 
+</div>
+
+
 <button
-class="primary"
-style="width:100%"
+class="primary auth-main-button"
 onclick="register()">
 
 إنشاء حساب
@@ -452,6 +1135,63 @@ onclick="register()">
 </button>
 
 </div>
+
+
+
+<!-- RESET PASSWORD -->
+
+<div id="resetForm" class="hidden reset-box">
+
+<div class="reset-header">
+
+<div class="reset-icon"></div>
+
+<h3>
+إعادة تعيين كلمة المرور
+</h3>
+
+<p>
+أدخل بريدك الإلكتروني وسنرسل إليك رابطًا
+لإعادة تعيين كلمة المرور.
+</p>
+
+</div>
+
+
+<div class="input-group">
+
+<span class="input-icon icon-mail"></span>
+
+<input
+id="resetEmail"
+type="email"
+placeholder="البريد الإلكتروني"
+autocomplete="email"
+>
+
+</div>
+
+
+<button
+class="primary auth-main-button"
+onclick="resetPassword()">
+
+إرسال رابط إعادة التعيين
+
+</button>
+
+
+<button
+type="button"
+class="gray back-login"
+onclick="showLogin()">
+
+العودة إلى تسجيل الدخول
+
+</button>
+
+</div>
+
 
 
 <div id="authMessage"></div>
@@ -462,7 +1202,9 @@ onclick="register()">
 
 
 
-<!-- ================= HOME ================= -->
+<!-- =========================================================
+     HOME
+========================================================= -->
 
 <main id="homePage" class="container hidden">
 
@@ -480,13 +1222,15 @@ onclick="register()">
 
 
 
-<!-- ================= BASIC ================= -->
+<!-- BASIC -->
 
 <div class="card">
 
 <div class="section-title">
 
-<span style="font-size:28px;">📚</span>
+<div class="section-icon">
+A
+</div>
 
 <h2>
 المواد الأساسية
@@ -516,13 +1260,15 @@ class="books-area">
 
 
 
-<!-- ================= SCIENTIFIC ================= -->
+<!-- SCIENTIFIC -->
 
 <div class="card">
 
 <div class="section-title">
 
-<span style="font-size:28px;">🔬</span>
+<div class="section-icon">
+S
+</div>
 
 <h2>
 المساق العلمي
@@ -552,13 +1298,15 @@ class="books-area">
 
 
 
-<!-- ================= LITERARY ================= -->
+<!-- LITERARY -->
 
 <div class="card">
 
 <div class="section-title">
 
-<span style="font-size:28px;">📚</span>
+<div class="section-icon">
+L
+</div>
 
 <h2>
 المساق الأدبي
@@ -591,7 +1339,9 @@ class="books-area">
 
 
 
-<!-- ================= ADMIN ================= -->
+<!-- =========================================================
+     ADMIN
+========================================================= -->
 
 <section
 id="adminPage"
@@ -691,7 +1441,10 @@ onclick="addBook()">
 <script type="module">
 
 
-/* ================= FIREBASE ================= */
+/* =========================================================
+   FIREBASE
+   القديم الخاص بالموقع
+========================================================= */
 
 import {
     initializeApp
@@ -704,6 +1457,7 @@ import {
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
+    sendPasswordResetEmail,
     onAuthStateChanged,
     signOut
 }
@@ -724,6 +1478,10 @@ import {
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
+
+/* =========================================================
+   OLD FIREBASE CONFIG
+========================================================= */
 
 const firebaseConfig = {
 
@@ -754,22 +1512,28 @@ const firebaseConfig = {
 const app =
 initializeApp(firebaseConfig);
 
+
 const auth =
 getAuth(app);
+
 
 const db =
 getFirestore(app);
 
 
 
-/* ================= ADMIN ================= */
+/* =========================================================
+   ADMIN
+========================================================= */
 
 const ADMIN_EMAIL =
 "meshalalboos@gmail.com";
 
 
 
-/* ================= SUBJECTS ================= */
+/* =========================================================
+   SUBJECTS
+========================================================= */
 
 const basicSubjects = [
 
@@ -804,32 +1568,36 @@ const literarySubjects = [
 
 
 
-/* ================= ICONS ================= */
+/* =========================================================
+   MODERN ICONS
+========================================================= */
 
 const icons = {
 
-    "أدب":"📕",
-    "بلاغة":"📘",
-    "قواعد":"📗",
+    "أدب":"A",
+    "بلاغة":"B",
+    "قواعد":"N",
     "إنجليزي":"EN",
-    "قرآن":"📖",
+    "قرآن":"Q",
 
-    "كيمياء":"🧪",
-    "فيزياء":"⚛",
+    "كيمياء":"C",
+    "فيزياء":"P",
     "رياضيات":"∑",
-    "أحياء":"🧬",
-    "هندسة":"∠",
+    "أحياء":"BIO",
+    "هندسة":"E",
 
-    "تاريخ":"ت",
-    "جغرافيا":"ج",
-    "دراسات":"د",
+    "تاريخ":"T",
+    "جغرافيا":"G",
+    "دراسات":"D",
     "رياضيات أساسية":"∑"
 
 };
 
 
 
-/* ================= LOGIN UI ================= */
+/* =========================================================
+   LOGIN UI
+========================================================= */
 
 window.showLogin = function(){
 
@@ -840,6 +1608,14 @@ window.showLogin = function(){
     document
     .getElementById("registerForm")
     .classList.add("hidden");
+
+    document
+    .getElementById("resetForm")
+    .classList.add("hidden");
+
+    document
+    .getElementById("authMessage")
+    .innerHTML = "";
 
 };
 
@@ -854,11 +1630,60 @@ window.showRegister = function(){
     .getElementById("registerForm")
     .classList.remove("hidden");
 
+    document
+    .getElementById("resetForm")
+    .classList.add("hidden");
+
+    document
+    .getElementById("authMessage")
+    .innerHTML = "";
+
+};
+
+
+window.showResetPassword = function(){
+
+    document
+    .getElementById("loginForm")
+    .classList.add("hidden");
+
+    document
+    .getElementById("registerForm")
+    .classList.add("hidden");
+
+    document
+    .getElementById("resetForm")
+    .classList.remove("hidden");
+
+    document
+    .getElementById("authMessage")
+    .innerHTML = "";
+
+
+
+    const loginEmail =
+    document
+    .getElementById("loginEmail")
+    .value
+    .trim();
+
+
+    if(loginEmail){
+
+        document
+        .getElementById("resetEmail")
+        .value =
+        loginEmail;
+
+    }
+
 };
 
 
 
-/* ================= REGISTER ================= */
+/* =========================================================
+   REGISTER
+========================================================= */
 
 window.register = async function(){
 
@@ -911,12 +1736,40 @@ window.register = async function(){
         '<div class="message success-msg">تم إنشاء الحساب بنجاح.</div>';
 
     }
+
     catch(error){
 
         console.error(error);
 
+        let text =
+        "تعذر إنشاء الحساب.";
+
+        if(error.code === "auth/email-already-in-use"){
+
+            text =
+            "هذا البريد الإلكتروني مستخدم بالفعل.";
+
+        }
+        else if(
+            error.code === "auth/invalid-email"
+        ){
+
+            text =
+            "البريد الإلكتروني غير صحيح.";
+
+        }
+        else if(
+            error.code === "auth/weak-password"
+        ){
+
+            text =
+            "كلمة المرور ضعيفة.";
+
+        }
+
+
         message.innerHTML =
-        '<div class="message error">تعذر إنشاء الحساب.</div>';
+        `<div class="message error">${text}</div>`;
 
     }
 
@@ -924,7 +1777,9 @@ window.register = async function(){
 
 
 
-/* ================= LOGIN ================= */
+/* =========================================================
+   LOGIN
+========================================================= */
 
 window.login = async function(){
 
@@ -965,12 +1820,38 @@ window.login = async function(){
         message.innerHTML = "";
 
     }
+
     catch(error){
 
         console.error(error);
 
+        let text =
+        "البريد أو كلمة المرور غير صحيحة.";
+
+
+        if(
+            error.code ===
+            "auth/user-not-found"
+        ){
+
+            text =
+            "لا يوجد حساب بهذا البريد.";
+
+        }
+
+        else if(
+            error.code ===
+            "auth/wrong-password"
+        ){
+
+            text =
+            "كلمة المرور غير صحيحة.";
+
+        }
+
+
         message.innerHTML =
-        '<div class="message error">البريد أو كلمة المرور غير صحيحة.</div>';
+        `<div class="message error">${text}</div>`;
 
     }
 
@@ -978,7 +1859,95 @@ window.login = async function(){
 
 
 
-/* ================= LOGOUT ================= */
+/* =========================================================
+   RESET PASSWORD
+========================================================= */
+
+window.resetPassword = async function(){
+
+    const email =
+    document
+    .getElementById("resetEmail")
+    .value
+    .trim();
+
+    const message =
+    document
+    .getElementById("authMessage");
+
+
+    if(!email){
+
+        message.innerHTML =
+        '<div class="message error">أدخل بريدك الإلكتروني أولاً.</div>';
+
+        return;
+
+    }
+
+
+    try{
+
+        await sendPasswordResetEmail(
+            auth,
+            email
+        );
+
+
+        message.innerHTML = `
+
+            <div class="message success-msg">
+
+                تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني.
+                تحقق من البريد الوارد أو مجلد الرسائل غير المرغوب فيها.
+
+            </div>
+
+        `;
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        let text =
+        "تعذر إرسال رابط إعادة التعيين.";
+
+
+        if(
+            error.code ===
+            "auth/user-not-found"
+        ){
+
+            text =
+            "لا يوجد حساب بهذا البريد.";
+
+        }
+
+        else if(
+            error.code ===
+            "auth/invalid-email"
+        ){
+
+            text =
+            "البريد الإلكتروني غير صحيح.";
+
+        }
+
+
+        message.innerHTML =
+        `<div class="message error">${text}</div>`;
+
+    }
+
+};
+
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
 
 window.logout = async function(){
 
@@ -988,73 +1957,101 @@ window.logout = async function(){
 
 
 
-/* ================= AUTH STATE ================= */
+/* =========================================================
+   AUTH STATE
+========================================================= */
 
-onAuthStateChanged(auth,(user)=>{
+onAuthStateChanged(
+    auth,
+    (user)=>{
 
-    const authPage =
-    document.getElementById("authPage");
+        const authPage =
+        document.getElementById(
+            "authPage"
+        );
 
-    const homePage =
-    document.getElementById("homePage");
+        const homePage =
+        document.getElementById(
+            "homePage"
+        );
 
-    const adminPage =
-    document.getElementById("adminPage");
+        const adminPage =
+        document.getElementById(
+            "adminPage"
+        );
 
-    const userArea =
-    document.getElementById("userArea");
-
-
-    if(user){
-
-        authPage.classList.add("hidden");
-
-        homePage.classList.remove("hidden");
-
-
-        userArea.innerHTML = `
-
-            <button
-            class="gray"
-            onclick="logout()">
-
-            خروج
-
-            </button>
-
-        `;
+        const userArea =
+        document.getElementById(
+            "userArea"
+        );
 
 
-        if(
-            user.email &&
-            user.email.toLowerCase() ===
-            ADMIN_EMAIL.toLowerCase()
-        ){
+        if(user){
 
-            adminPage.classList.remove("hidden");
+            authPage.classList.add(
+                "hidden"
+            );
 
-            loadAdminBooks();
+            homePage.classList.remove(
+                "hidden"
+            );
+
+
+            userArea.innerHTML = `
+
+                <button
+                class="gray"
+                onclick="logout()">
+
+                    خروج
+
+                </button>
+
+            `;
+
+
+            if(
+                user.email &&
+                user.email.toLowerCase() ===
+                ADMIN_EMAIL.toLowerCase()
+            ){
+
+                adminPage.classList.remove(
+                    "hidden"
+                );
+
+                loadAdminBooks();
+
+            }
+
+        }
+
+        else{
+
+            authPage.classList.remove(
+                "hidden"
+            );
+
+            homePage.classList.add(
+                "hidden"
+            );
+
+            adminPage.classList.add(
+                "hidden"
+            );
+
+            userArea.innerHTML = "";
 
         }
 
     }
-    else{
-
-        authPage.classList.remove("hidden");
-
-        homePage.classList.add("hidden");
-
-        adminPage.classList.add("hidden");
-
-        userArea.innerHTML = "";
-
-    }
-
-});
+);
 
 
 
-/* ================= CREATE SUBJECT BUTTONS ================= */
+/* =========================================================
+   CREATE SUBJECT BUTTONS
+========================================================= */
 
 function createButtons(
     containerId,
@@ -1062,45 +2059,53 @@ function createButtons(
 ){
 
     const container =
-    document.getElementById(containerId);
+    document.getElementById(
+        containerId
+    );
+
 
     container.innerHTML = "";
 
 
-    subjects.forEach(subject=>{
+    subjects.forEach(
+        subject=>{
 
-        const div =
-        document.createElement("div");
-
-
-        div.className =
-        "material";
-
-
-        div.innerHTML = `
-
-            <span class="material-icon">
-
-                ${icons[subject] || "📚"}
-
-            </span>
-
-            <span class="material-name">
-
-                ${escapeHTML(subject)}
-
-            </span>
-
-        `;
+            const div =
+            document.createElement(
+                "div"
+            );
 
 
-        div.onclick =
-        () => loadBooks(subject);
+            div.className =
+            "material";
 
 
-        container.appendChild(div);
+            div.innerHTML = `
 
-    });
+                <span class="material-icon">
+
+                    ${icons[subject] || "BOOK"}
+
+                </span>
+
+                <span class="material-name">
+
+                    ${escapeHTML(subject)}
+
+                </span>
+
+            `;
+
+
+            div.onclick =
+            () =>
+            loadBooks(subject);
+
+
+            container.appendChild(div);
+
+        }
+    );
 
 }
 
@@ -1124,14 +2129,19 @@ createButtons(
 
 
 
-/* ================= LOAD BOOKS ================= */
+/* =========================================================
+   LOAD BOOKS
+========================================================= */
 
-window.loadBooks = async function(subject){
+window.loadBooks =
+async function(subject){
 
     let area;
 
 
-    if(basicSubjects.includes(subject)){
+    if(
+        basicSubjects.includes(subject)
+    ){
 
         area =
         document.getElementById(
@@ -1139,6 +2149,7 @@ window.loadBooks = async function(subject){
         );
 
     }
+
     else if(
         scientificSubjects.includes(subject)
     ){
@@ -1149,6 +2160,7 @@ window.loadBooks = async function(subject){
         );
 
     }
+
     else if(
         literarySubjects.includes(subject)
     ){
@@ -1174,9 +2186,8 @@ window.loadBooks = async function(subject){
 
             <h3>
 
-                ${icons[subject] || "📚"}
-
-                مقررات ${escapeHTML(subject)}
+                مقررات
+                ${escapeHTML(subject)}
 
             </h3>
 
@@ -1195,8 +2206,16 @@ window.loadBooks = async function(subject){
 
         const q =
         query(
-            collection(db,"books"),
-            where("subject","==",subject)
+            collection(
+                db,
+                "books"
+            ),
+
+            where(
+                "subject",
+                "==",
+                subject
+            )
         );
 
 
@@ -1231,78 +2250,89 @@ window.loadBooks = async function(subject){
             `;
 
         }
+
         else{
 
-            snapshot.forEach(item=>{
+            snapshot.forEach(
+                item=>{
 
-                const book =
-                item.data();
-
-
-                const safeUrl =
-                isSafeUrl(book.url)
-                ? book.url
-                : "#";
+                    const book =
+                    item.data();
 
 
-                html += `
+                    const safeUrl =
+                    isSafeUrl(
+                        book.url
+                    )
+                    ?
+                    book.url
+                    :
+                    "#";
 
-                    <div class="book">
 
-                        <h3>
+                    html += `
 
-                            ${escapeHTML(book.title)}
+                        <div class="book">
 
-                        </h3>
+                            <h3>
+
+                                ${escapeHTML(
+                                    book.title
+                                )}
+
+                            </h3>
 
 
-                        <div class="small">
+                            <div class="small">
 
-                            المادة:
-                            ${escapeHTML(book.subject)}
+                                المادة:
+                                ${escapeHTML(
+                                    book.subject
+                                )}
+
+                            </div>
+
+
+                            <div class="book-buttons">
+
+                                <a
+                                href="${safeUrl}"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                    <button
+                                    class="primary">
+
+                                        عرض PDF
+
+                                    </button>
+
+                                </a>
+
+
+                                <a
+                                href="${safeUrl}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                download>
+
+                                    <button
+                                    class="success">
+
+                                        تحميل
+
+                                    </button>
+
+                                </a>
+
+                            </div>
 
                         </div>
 
+                    `;
 
-                        <div class="book-buttons">
-
-                            <a
-                            href="${safeUrl}"
-                            target="_blank"
-                            rel="noopener noreferrer">
-
-                                <button
-                                class="primary">
-
-                                    عرض PDF
-
-                                </button>
-
-                            </a>
-
-
-                            <a
-                            href="${safeUrl}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            download>
-
-                                <button
-                                class="success">
-
-                                    تحميل
-
-                                </button>
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                `;
-
-            });
+                }
+            );
 
         }
 
@@ -1322,8 +2352,8 @@ window.loadBooks = async function(subject){
 
         });
 
-
     }
+
     catch(error){
 
         console.error(error);
@@ -1349,7 +2379,9 @@ window.loadBooks = async function(subject){
 
 
 
-/* ================= ADMIN SECTION ================= */
+/* =========================================================
+   ADMIN SECTION
+========================================================= */
 
 const adminSection =
 document.getElementById(
@@ -1394,13 +2426,19 @@ function updateAdminSubjects(){
         basicSubjects;
 
     }
-    else if(section === "scientific"){
+
+    else if(
+        section === "scientific"
+    ){
 
         subjects =
         scientificSubjects;
 
     }
-    else if(section === "literary"){
+
+    else if(
+        section === "literary"
+    ){
 
         subjects =
         literarySubjects;
@@ -1408,35 +2446,40 @@ function updateAdminSubjects(){
     }
 
 
-    subjects.forEach(subject=>{
+    subjects.forEach(
+        subject=>{
 
-        const option =
-        document.createElement(
-            "option"
-        );
-
-
-        option.value =
-        subject;
+            const option =
+            document.createElement(
+                "option"
+            );
 
 
-        option.textContent =
-        subject;
+            option.value =
+            subject;
 
 
-        subjectSelect.appendChild(
-            option
-        );
+            option.textContent =
+            subject;
 
-    });
+
+            subjectSelect.appendChild(
+                option
+            );
+
+        }
+    );
 
 }
 
 
 
-/* ================= ADD BOOK ================= */
+/* =========================================================
+   ADD BOOK
+========================================================= */
 
-window.addBook = async function(){
+window.addBook =
+async function(){
 
     const user =
     auth.currentUser;
@@ -1460,33 +2503,42 @@ window.addBook = async function(){
 
     const section =
     document
-    .getElementById("adminSection")
+    .getElementById(
+        "adminSection"
+    )
     .value;
 
 
     const subject =
     document
-    .getElementById("adminSubject")
+    .getElementById(
+        "adminSubject"
+    )
     .value;
 
 
     const title =
     document
-    .getElementById("adminTitle")
+    .getElementById(
+        "adminTitle"
+    )
     .value
     .trim();
 
 
     const url =
     document
-    .getElementById("adminUrl")
+    .getElementById(
+        "adminUrl"
+    )
     .value
     .trim();
 
 
     const message =
-    document
-    .getElementById("adminMessage");
+    document.getElementById(
+        "adminMessage"
+    );
 
 
     if(
@@ -1531,20 +2583,29 @@ window.addBook = async function(){
     try{
 
         await addDoc(
-            collection(db,"books"),
+            collection(
+                db,
+                "books"
+            ),
             {
 
-                section:section,
+                section:
+                section,
 
-                subject:subject,
+                subject:
+                subject,
 
-                title:title,
+                title:
+                title,
 
-                url:url,
+                url:
+                url,
 
-                createdAt:Date.now(),
+                createdAt:
+                Date.now(),
 
-                createdBy:user.uid
+                createdBy:
+                user.uid
 
             }
         );
@@ -1562,12 +2623,16 @@ window.addBook = async function(){
 
 
         document
-        .getElementById("adminSection")
+        .getElementById(
+            "adminSection"
+        )
         .value = "";
 
 
         document
-        .getElementById("adminSubject")
+        .getElementById(
+            "adminSubject"
+        )
         .innerHTML = `
 
             <option value="">
@@ -1578,19 +2643,23 @@ window.addBook = async function(){
 
 
         document
-        .getElementById("adminTitle")
+        .getElementById(
+            "adminTitle"
+        )
         .value = "";
 
 
         document
-        .getElementById("adminUrl")
+        .getElementById(
+            "adminUrl"
+        )
         .value = "";
 
 
         loadAdminBooks();
 
-
     }
+
     catch(error){
 
         console.error(error);
@@ -1612,7 +2681,9 @@ window.addBook = async function(){
 
 
 
-/* ================= ADMIN BOOKS ================= */
+/* =========================================================
+   ADMIN BOOKS
+========================================================= */
 
 async function loadAdminBooks(){
 
@@ -1630,7 +2701,10 @@ async function loadAdminBooks(){
 
         const snapshot =
         await getDocs(
-            collection(db,"books")
+            collection(
+                db,
+                "books"
+            )
         );
 
 
@@ -1647,66 +2721,76 @@ async function loadAdminBooks(){
         }
 
 
-        snapshot.forEach(item=>{
+        snapshot.forEach(
+            item=>{
 
-            const book =
-            item.data();
-
-
-            const div =
-            document.createElement(
-                "div"
-            );
+                const book =
+                item.data();
 
 
-            div.className =
-            "admin-book";
+                const div =
+                document.createElement(
+                    "div"
+                );
 
 
-            div.innerHTML = `
-
-                <div class="admin-book-title">
-
-                    ${escapeHTML(book.title)}
-
-                </div>
+                div.className =
+                "admin-book";
 
 
-                <div class="admin-book-section">
+                div.innerHTML = `
 
-                    ${getSectionName(book.section)}
+                    <div class="admin-book-title">
 
-                </div>
+                        ${escapeHTML(
+                            book.title
+                        )}
 
-
-                <div class="admin-book-subject">
-
-                    ${escapeHTML(book.subject)}
-
-                </div>
+                    </div>
 
 
-                <div class="admin-actions">
+                    <div class="admin-book-section">
 
-                    <button
-                    class="danger"
-                    onclick="deleteBook('${item.id}')">
+                        ${getSectionName(
+                            book.section
+                        )}
 
-                        حذف
-
-                    </button>
-
-                </div>
-
-            `;
+                    </div>
 
 
-            container.appendChild(div);
+                    <div class="admin-book-subject">
 
-        });
+                        ${escapeHTML(
+                            book.subject
+                        )}
 
+                    </div>
+
+
+                    <div class="admin-actions">
+
+                        <button
+                        class="danger"
+                        onclick="deleteBook('${item.id}')">
+
+                            حذف
+
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(
+                    div
+                );
+
+            }
+        );
 
     }
+
     catch(error){
 
         console.error(error);
@@ -1720,18 +2804,23 @@ async function loadAdminBooks(){
 
 
 
-/* ================= SECTION NAME ================= */
+/* =========================================================
+   SECTION NAME
+========================================================= */
 
 function getSectionName(section){
 
     if(section === "basic")
         return "المواد الأساسية";
 
+
     if(section === "scientific")
         return "المساق العلمي";
 
+
     if(section === "literary")
         return "المساق الأدبي";
+
 
     return "غير محدد";
 
@@ -1739,9 +2828,12 @@ function getSectionName(section){
 
 
 
-/* ================= DELETE BOOK ================= */
+/* =========================================================
+   DELETE BOOK
+========================================================= */
 
-window.deleteBook = async function(id){
+window.deleteBook =
+async function(id){
 
     const user =
     auth.currentUser;
@@ -1777,14 +2869,18 @@ window.deleteBook = async function(id){
     try{
 
         await deleteDoc(
-            doc(db,"books",id)
+            doc(
+                db,
+                "books",
+                id
+            )
         );
 
 
         loadAdminBooks();
 
-
     }
+
     catch(error){
 
         console.error(error);
@@ -1799,7 +2895,9 @@ window.deleteBook = async function(id){
 
 
 
-/* ================= URL CHECK ================= */
+/* =========================================================
+   URL CHECK
+========================================================= */
 
 function isSafeUrl(value){
 
@@ -1814,6 +2912,7 @@ function isSafeUrl(value){
         );
 
     }
+
     catch(error){
 
         return false;
@@ -1824,21 +2923,40 @@ function isSafeUrl(value){
 
 
 
-/* ================= ESCAPE HTML ================= */
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
 
 function escapeHTML(value){
 
-    return String(value || "")
+    return String(
+        value || ""
+    )
 
-    .replaceAll("&","&amp;")
+    .replaceAll(
+        "&",
+        "&amp;"
+    )
 
-    .replaceAll("<","&lt;")
+    .replaceAll(
+        "<",
+        "&lt;"
+    )
 
-    .replaceAll(">","&gt;")
+    .replaceAll(
+        ">",
+        "&gt;"
+    )
 
-    .replaceAll('"',"&quot;")
+    .replaceAll(
+        '"',
+        "&quot;"
+    )
 
-    .replaceAll("'","&#039;");
+    .replaceAll(
+        "'",
+        "&#039;"
+    );
 
 }
 
@@ -1846,4 +2964,4 @@ function escapeHTML(value){
 
 </body>
 
-   </html>
+    </html>
